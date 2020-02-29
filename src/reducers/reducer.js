@@ -1,0 +1,21 @@
+const initialName = {
+  name: "ABC"
+};
+const reducer = (state = initialName, action) => {
+  switch (action.type) {
+    case "KUNAL":
+      return {
+        name: "Kunal Hinduja"
+      };
+    case "NEHA":
+      return {
+        name: "Neha Hinduja"
+      };
+    default:
+      return state;
+  }
+
+  //return state;
+};
+
+export default reducer;
