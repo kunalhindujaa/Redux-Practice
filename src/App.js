@@ -14,6 +14,14 @@ class App extends Component {
         <br />
         <button onClick={this.props.displayKunal}> Kunal Hinduja </button>
         <button onClick={this.props.displayNeha}> Neha Hinduja </button>
+        Input :{" "}
+        <input
+          type="text"
+          name="textInput"
+          value={this.props.displayChange}
+          onChange={this.props.displayInput}
+        />
+        <p> {this.props.displayChange}</p>
       </div>
     );
   }
@@ -21,15 +29,21 @@ class App extends Component {
 
 const matchStateToProps = state => {
   return {
-    displayName: state.name
+    displayName: state.name,
+    displayChange: state.input
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     displayKunal: () => dispatch({ type: "KUNAL" }),
-    displayNeha: () => dispatch({ type: "NEHA" })
+    displayNeha: () => dispatch({ type: "NEHA" }),
+    displayInput: event =>
+      dispatch({ type: "CHANGE", value: event.target.value })
   };
 };
 
-export default connect(matchStateToProps, mapDispatchToProps)(App);
+export default connect(
+  matchStateToProps,
+  mapDispatchToProps
+)(App);
